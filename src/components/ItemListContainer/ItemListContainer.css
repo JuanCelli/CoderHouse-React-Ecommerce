@@ -1,0 +1,9 @@
+.container-item-list-container{
+    width: 100%;
+    display: flex;
+    place-content: center;
+}
+
+.greeting{
+    font-size: 50px;
+}

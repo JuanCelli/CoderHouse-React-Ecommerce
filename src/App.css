@@ -1,0 +1,7 @@
+#root{
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+}
