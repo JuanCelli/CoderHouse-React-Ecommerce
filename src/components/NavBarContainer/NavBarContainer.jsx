@@ -1,28 +1,19 @@
-import "./ItemListContainer.css"
-
 import { useState, useEffect } from 'react'
 import fetchData from "../../utils/fetchData"
-import ItemList from "../ItemList/ItemList"
+import removeDuplicate from '../../utils/removeDuplicates'
 
+import NavBar from '../NavBar/NavBar'
 
-
-
-
-function ItemListContainer(){
+const NavBarContainer = () => {
     const [arrayProducts,setArrayProducts] = useState([])
     const [loading,setLoading] = useState(true)
-
-
-
-
-   
-
-
+    const [categories, setCategories] = useState([])
 
     useEffect(()=>{
         fetchData('https://fakestoreapi.com/products')
             .then(res=>{
                 setArrayProducts(res)
+                setCategories(removeDuplicate(res,"category"))
                 setLoading(false)
             })
             .catch(error => {
@@ -30,13 +21,11 @@ function ItemListContainer(){
               });
       },[])
 
+    return (
+        <>
+         {!loading ? <NavBar categories={categories}/> : <></>}
+        </>
+    )
+}
 
-    return(
-        <div className="container-item-list">
-            {!loading ? <ItemList arrayProducts={arrayProducts}/> : <></>}
-        </div>
-        )
-    }
-        
-
-export default ItemListContainer
+export default NavBarContainer

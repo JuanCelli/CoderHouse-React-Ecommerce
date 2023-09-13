@@ -1,28 +1,32 @@
 .navbar{
     width: 100% !important;
-    height: 120px;
-    padding: 10px 50px;
-    margin:0;
-    font-size: 30px;
-    display: flex;
-    justify-content: space-between;
+    height: 120px !important;
+    padding: 10px 50px !important;
+    margin:0 !important;
+    font-size: 30px !important;
+    display: flex !important;
+    justify-content: space-between !important;
     background-color: rgb(221, 221, 221) !important;
     
 }
 
-.navbar-collapse{
-    display: flex;
-    justify-content: end;
-    align-items: center;
-}
-
 .navbar-nav{
-    width: 70%;
-    display: flex;
-    justify-content: space-around;
+    width: 70% !important;
+    display: flex !important;
+    justify-content: space-around !important;
 }
 
 .navbar-brand-img{
-    width: 110px;
-    height: 110px;
+    width: 110px !important;
+    height: 110px !important;
+}
+
+.navbar-collapse{
+    display: flex !important;
+    justify-content: end !important;
+    align-items: center !important;
+}
+
+.nav-item{
+    cursor: pointer;
 }
