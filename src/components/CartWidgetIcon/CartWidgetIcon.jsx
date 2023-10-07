@@ -1,19 +1,24 @@
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping} from '@fortawesome/free-solid-svg-icons';
-import "./CartWidget.css";
+import "./CartWidgetIcon.css";
+import { CartContext } from '../../context/cartContext';
+import { useContext } from 'react';
 
 
-function CartWidget(){
+
+
+function CartWidgetIcon(){
+    const {getQualityProducts} = useContext(CartContext)
     return (
             <div className="nav-link icon-cart btn btn-primary position-relative">
                <FontAwesomeIcon icon={faCartShopping} />
                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id='amount-span'>
-                    4
+                    {getQualityProducts()}
                 </span>
             </div>
 
     )
 }
 
-export default CartWidget
+export default CartWidgetIcon

@@ -18,7 +18,7 @@
 }
 
 .product-card-container:hover .product-info-container{
-    background-color: rgb(241, 225, 253);
+    background-color: #f1e1fd;
 }
 .product-card-container:hover .product-title{
     color: #9f00aa;

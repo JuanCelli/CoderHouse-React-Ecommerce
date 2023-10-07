@@ -2,8 +2,13 @@ import useCounter from "../../hooks/useCounter"
 
 
 const PanelDetailContainer = (props) => {
-    const {initial,stock} = props
+    const {initial,stock,onAdd} = props
     const {count, handleAdd, handleSubtract} = useCounter(initial,stock)
+
+    const handleOnAdd = ()=>{
+        onAdd(count)
+    }
+    
     return (
         <div>
             <div>
@@ -11,7 +16,7 @@ const PanelDetailContainer = (props) => {
                 <span>{count}</span>
                 <button onClick={handleAdd}>+</button>
             </div>
-            <button>Agregar</button>
+            <button onClick={handleOnAdd}>Agregar</button>
         </div>
     )
 }

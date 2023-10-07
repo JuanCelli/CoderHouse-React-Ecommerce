@@ -8,7 +8,6 @@ const FilterItemList = ({children,arrayProducts,filterCategoriesInitial=""}) => 
     const [filterStateCategories,setFilterStateCategories] = useState(filterCategoriesInitial)
 
     const {categoryName}= useParams()
-    const [categoryUrl, setCategoryUrl] = useState("")
 
     useEffect(() => {
         if(categoryName===undefined){

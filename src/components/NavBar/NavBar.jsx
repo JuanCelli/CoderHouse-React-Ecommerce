@@ -1,7 +1,7 @@
 import takeOutSpace from "../../utils/takeOutSpaces"
 
 import { Link } from 'react-router-dom'
-import CartWidget from '../CartWidget/CartWidget'
+import CartWidgetIcon from '../CartWidgetIcon/CartWidgetIcon'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './NavBar.css'
@@ -36,20 +36,14 @@ function NavBar(props){
                                                 <li key={category}><Link className="dropdown-item" to={`/category/${takeOutSpace(category)}`}>{category}<span className="sr-only"></span></Link></li>
                                             )
                                         })}
-{/*                                         
-                                        <li><Link className="dropdown-item" to="/category">Categorias<span className="sr-only"></span></Link></li>
-                                        <li><Link className="dropdown-item" to="/category">Categorias<span className="sr-only"></span></Link></li> */}
                                     </ul>
                                     </li>
                                 </ul>
                             </div>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/">Descuentos</Link>
-                        </li>
-                        <li className="nav-item">
                             <Link to="/cart" >
-                                <CartWidget/>
+                                <CartWidgetIcon/>
                             </Link>
                         </li>
                     </ul>

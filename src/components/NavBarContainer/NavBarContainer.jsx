@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import fetchData from "../../utils/fetchData"
+import {collection, getDocs, getFirestore} from "firebase/firestore"
 import removeDuplicate from '../../utils/removeDuplicates'
 
 import NavBar from '../NavBar/NavBar'
@@ -9,17 +9,15 @@ const NavBarContainer = () => {
     const [loading,setLoading] = useState(true)
     const [categories, setCategories] = useState([])
 
+
     useEffect(()=>{
-        fetchData('https://fakestoreapi.com/products')
-            .then(res=>{
-                setArrayProducts(res)
-                setCategories(removeDuplicate(res,"category"))
-                setLoading(false)
-            })
-            .catch(error => {
-                console.error('Error:', error);
-              });
-      },[])
+        const db = getFirestore()
+        const queryCollection = collection(db, "products")
+        getDocs(queryCollection)
+            .then(res=>setCategories(removeDuplicate(res.docs.map(product=>({id:product.id,...product.data()})),"category")))
+            .catch(error=>console.log(error))
+            .finally(()=>setLoading(false))
+    },[])
 
     return (
         <>

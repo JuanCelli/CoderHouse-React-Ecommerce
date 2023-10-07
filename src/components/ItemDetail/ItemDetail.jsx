@@ -1,9 +1,20 @@
+import { useContext } from "react"
+
+import { CartContext } from "../../context/cartContext"
 import PanelDetailContainer from "../PanelDetailContainer/PanelDetailContainer"
 
 import "./ItemDetail.css"
 
 const ItemDetail = (props) => {
-    const {id,title,image,category,price,description,stock} = props
+    const { addProduct} = useContext(CartContext)
+    const {product} = props
+    const {id,title,image,price,description,stock} = props?.product
+
+    const handleAdd = (count)=>{
+        addProduct(
+            {...product,
+            quality: count})
+    }
     
     return (
         <div className="product-detail-container">
@@ -13,7 +24,8 @@ const ItemDetail = (props) => {
             <div className="product-detail-container-info">
                 <h3 className="product-detail-title">{title}</h3>
                 <p>${price}</p>
-                <PanelDetailContainer initial={1} stock={stock} />
+                <p>Stock: {stock}</p>
+                <PanelDetailContainer initial={1} stock={stock} onAdd={handleAdd}/>
             </div>
         </div>
     )
